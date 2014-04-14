@@ -1,9 +1,12 @@
 <?php
-// $Id: nikocale.inc.php,v 0.1.0 2007/10/15 HOMMA Takashi $
-// 
-// honma@daniel-soft.com
-// http://
-// ----
+/**
+ * nikocale.inc.php - Pukiwiki ニコカレ plugin
+ *
+ * @author      Takashi Homma
+ * @licence     http://www.gnu.org/licenses/gpl.html  GPLv2
+ * @link        http://github.com/takas-ho/pukiwiki.nikocale
+ * @version     0.1.0
+ */
 
 /** 過去の表示期間 */
 define('PLUGIN_NIKOCALE_DISPLAY_DAYS', 14);
