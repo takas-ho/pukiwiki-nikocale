@@ -5,20 +5,20 @@
 // http://
 // ----
 
-/** ²áµî¤ÎÉ½¼¨´ü´Ö */
+/** éå»ã®è¡¨ç¤ºæœŸé–“ */
 define('PLUGIN_NIKOCALE_DISPLAY_DAYS', 14);
-/** Ì¤Íè¤ÎÉ½¼¨´ü´Ö */
+/** æœªæ¥ã®è¡¨ç¤ºæœŸé–“ */
 define('PLUGIN_NIKOCALE_AFTER_DAYS', 2);
 
-/** Good,Normal,Bad ¥Ë¥³¥Ë¥³²èÁü¥Ñ¥¹ */
+/** Good,Normal,Bad ãƒ‹ã‚³ãƒ‹ã‚³ç”»åƒãƒ‘ã‚¹ */
 define('PLUGIN_NIKOCALE_IMAGE_GOOD', "image/niko/good32.gif");
 define('PLUGIN_NIKOCALE_IMAGE_NORMAL', "image/niko/normal32.gif");
 define('PLUGIN_NIKOCALE_IMAGE_BAD', "image/niko/bad32.gif");
 
-/** ²èÁü¤ÎÉ½¼¨¥µ¥¤¥º¡Ê¤½¤Î¤Ş¤Ş¤Î¥µ¥¤¥º¤Ê¤é 0 ¡Ë */
+/** ç”»åƒã®è¡¨ç¤ºã‚µã‚¤ã‚ºï¼ˆãã®ã¾ã¾ã®ã‚µã‚¤ã‚ºãªã‚‰ 0 ï¼‰ */
 define('PLUGIN_NIKOCALE_IMAGE_SIZE', 24);
 
-/** ¥«¥ì¥ó¥À¡¼¤Ç»ÈÍÑ¤¹¤ë¥¹¥¿¥¤¥ë¥·¡¼¥ÈÄêµÁ */
+/** ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã§ä½¿ç”¨ã™ã‚‹ã‚¹ã‚¿ã‚¤ãƒ«ã‚·ãƒ¼ãƒˆå®šç¾© */
 define('PLUGIN_NIKOCALE_STYLE_NAME', "style_td_day");
 define('PLUGIN_NIKOCALE_STYLE_WEEKDAY', "style_td_day");
 define('PLUGIN_NIKOCALE_STYLE_SATURDAY', "style_td_sat");
@@ -27,11 +27,11 @@ define('PLUGIN_NIKOCALE_STYLE_TODAY', "style_td_today");
 
 switch (LANG) {
 case 'ja':
-	define('PLUGIN_PCOMMENT_FORM_MEMBER_NM', '¤Ê¤Ş¤¨');
-	define('PLUGIN_PCOMMENT_FORM_DATE_NM', 'ÆüÉÕ');
-	define('PLUGIN_PCOMMENT_FORM_FEELING_NM', 'µ¤Ê¬');
-	define('PLUGIN_PCOMMENT_FORM_SUBMIT_NM', 'ÅĞÏ¿');
-	define('PLUGIN_PCOMMENT_FORM_BACK_NM', 'Ìá¤ë');
+	define('PLUGIN_PCOMMENT_FORM_MEMBER_NM', 'ãªã¾ãˆ');
+	define('PLUGIN_PCOMMENT_FORM_DATE_NM', 'æ—¥ä»˜');
+	define('PLUGIN_PCOMMENT_FORM_FEELING_NM', 'æ°—åˆ†');
+	define('PLUGIN_PCOMMENT_FORM_SUBMIT_NM', 'ç™»éŒ²');
+	define('PLUGIN_PCOMMENT_FORM_BACK_NM', 'æˆ»ã‚‹');
 	break;
 default:
 	define('PLUGIN_PCOMMENT_FORM_MEMBER_NM', 'Name');
@@ -89,8 +89,8 @@ function plugin_nikocale_action() {
 	if ( !checkdate( substr( $date, 5, 2), substr( $date, 8, 2), substr( $date, 0, 4))) {
 		$vars['page'] = $refer;
 		return array(
-			'msg' =>'ÆşÎÏ¥¨¥é¡¼.',
-			'body'=>'ÆüÉÕ¤Ï yyyy/mm/dd ·Á¼°¤ÇÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤.' ,
+			'msg' =>'å…¥åŠ›ã‚¨ãƒ©ãƒ¼.',
+			'body'=>'æ—¥ä»˜ã¯ yyyy/mm/dd å½¢å¼ã§å…¥åŠ›ã—ã¦ãã ã•ã„.' ,
 			'collided'=>TRUE
 			);
 	}
@@ -113,7 +113,7 @@ function plugin_nikocale_action() {
 		}
 	}
 	if ( ! $doUpdated) {
-		// ¿·µ¬
+		// æ–°è¦
 		$content = new PluginNikocaleNewContent( $member);
 		$content->set_detail( $yyyymmdd, $feeling, $comment);
 		$content->write( plugin_nikocale_get_new_page( $refer . PLUGIN_NIKOCALE_SUFFIX));
@@ -158,7 +158,7 @@ function plugin_nikocale_convert() {
 <table border="0" summary="calendar frame">
  <tr><td class="style_td_caltop2">
    <a href="$href_prev">&lt;&lt;</a>
-   <strong>$prev_date_str ¡Á $end_date_str</strong>
+   <strong>$prev_date_str ï½ $end_date_str</strong>
    <a href="$href_next">&gt;&gt;</a></td></tr>
  <tr>
   <td valign="top">
@@ -190,7 +190,7 @@ EOD;
 	}
 */
 	$ret .= "<tr>\n";
-	$ret .= '<td class="' . PLUGIN_NIKOCALE_STYLE_NAME . '"><div class ="small">¤Ê¤Ş¤¨</div></td>' . "\n";
+	$ret .= '<td class="' . PLUGIN_NIKOCALE_STYLE_NAME . '"><div class ="small">ãªã¾ãˆ</div></td>' . "\n";
 
 	// ** header **
 	$style_sheet_of_days = array();
@@ -329,9 +329,9 @@ function plugin_nikocale_get_new_page( $prefix) {
 }
 
 /**
- * Ï¢ÁÛÇÛÎó¤ò¤â¤È¤Ë GET¥Ñ¥é¥á¡¼¥¿¡Êkey1=value1&key2=value2&...¡Ë¤òÊÖ¤¹
- * @param Ï¢ÁÛÇÛÎó
- * @return GET¥Ñ¥é¥á¡¼¥¿
+ * é€£æƒ³é…åˆ—ã‚’ã‚‚ã¨ã« GETãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ï¼ˆkey1=value1&key2=value2&...ï¼‰ã‚’è¿”ã™
+ * @param é€£æƒ³é…åˆ—
+ * @return GETãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
  */
 function plugin_nikocale_make_get_param( $array) {
 	$keys = array_keys( $array);
@@ -345,8 +345,8 @@ function plugin_nikocale_make_get_param( $array) {
 
 function plugin_nikocale_error_required( $s) {
 	return array(
-		'msg' =>'ÆşÎÏ¥¨¥é¡¼.',
-		'body'=> $s . '¤¬Ì¤ÆşÎÏ¤Ç¤¹.' ,
+		'msg' =>'å…¥åŠ›ã‚¨ãƒ©ãƒ¼.',
+		'body'=> $s . 'ãŒæœªå…¥åŠ›ã§ã™.' ,
 		'collided'=>TRUE
 		);
 }
@@ -355,19 +355,19 @@ class LocalException extends Exception {}
 class IllegalArgumentException extends LocalException {}
 
 /**
- * ¥Ë¥³¥«¥ì¾ğÊó¥¯¥é¥¹
- * ( this : ¥Ë¥³¥«¥ì¾ğÊó¥Ú¡¼¥¸ ) = (1:1) ¤È¤Ê¤ë
+ * ãƒ‹ã‚³ã‚«ãƒ¬æƒ…å ±ã‚¯ãƒ©ã‚¹
+ * ( this : ãƒ‹ã‚³ã‚«ãƒ¬æƒ…å ±ãƒšãƒ¼ã‚¸ ) = (1:1) ã¨ãªã‚‹
  */
 class PluginNikocaleContent {
-	/** ¼«¿È¤Î¥Õ¥¡¥¤¥ëÌ¾ */
+	/** è‡ªèº«ã®ãƒ•ã‚¡ã‚¤ãƒ«å */
 	private $page_name;
-	/** Ì¾Á° */
+	/** åå‰ */
 	protected $name;
-	/** ÌÀºÙ */
-	private $details;	// PluginNikocaleDetail[]¤È¤·¤Æ»ÈÍÑ
+	/** æ˜ç´° */
+	private $details;	// PluginNikocaleDetail[]ã¨ã—ã¦ä½¿ç”¨
 	
 	/**
-	 * ¥³¥ó¥¹¥È¥é¥¯¥¿
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public function PluginNikocaleContent( $nikocale_page) {
 		$this->page_name = $nikocale_page;
@@ -393,25 +393,25 @@ class PluginNikocaleContent {
 	}
 	
 	/**
-	 * ÌÀºÙ¾ğÊó¤¬´Ş¤Ş¤ì¤ë¤«¤òÊÖ¤¹
-	 * @param $yyyymmdd	ÌÀºÙ¾ğÊó¤Î¥­¡¼
-	 * @return ´Ş¤Ş¤ì¤Æ¤¤¤ë¾ì¹ç¡¢true
+	 * æ˜ç´°æƒ…å ±ãŒå«ã¾ã‚Œã‚‹ã‹ã‚’è¿”ã™
+	 * @param $yyyymmdd	æ˜ç´°æƒ…å ±ã®ã‚­ãƒ¼
+	 * @return å«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã€true
 	 */
 	public function contains( $yyyymmdd) {
 		return isset( $this->details[ $yyyymmdd]);
 	}
 	/**
-	 * Ì¾Á°¤òÊÖ¤¹
-	 * @return Ì¾Á°
+	 * åå‰ã‚’è¿”ã™
+	 * @return åå‰
 	 */
 	public function get_name() {
 		return $this->name;
 	}
 	
 	/**
-	 * ÌÀºÙ¾ğÊó¤òÊÖ¤¹
-	 * @param $yyyymmdd	ÌÀºÙ¾ğÊó¤Î¥­¡¼
-	 * @return ÌÀºÙ¾ğÊó¡Ê³ºÅö¤·¤Ê¤¤¾ì¹ç¤Ï¶õ¤ÎÌÀºÙ¾ğÊó¡Ë
+	 * æ˜ç´°æƒ…å ±ã‚’è¿”ã™
+	 * @param $yyyymmdd	æ˜ç´°æƒ…å ±ã®ã‚­ãƒ¼
+	 * @return æ˜ç´°æƒ…å ±ï¼ˆè©²å½“ã—ãªã„å ´åˆã¯ç©ºã®æ˜ç´°æƒ…å ±ï¼‰
 	 */
 	private function get_detail( $yyyymmdd) {
 		if ( $this->contains( $yyyymmdd)) {
@@ -422,60 +422,60 @@ class PluginNikocaleContent {
 		}
 	}
 	/**
-	 * ÌÀºÙ¾ğÊó¤Î¥¤¥á¡¼¥¸¥¿¥°¤òÊÖ¤¹
-	 * @param $yyyymmdd	ÌÀºÙ¾ğÊó¤Î¥­¡¼
-	 * @return ¥¤¥á¡¼¥¸¥¿¥°
+	 * æ˜ç´°æƒ…å ±ã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°ã‚’è¿”ã™
+	 * @param $yyyymmdd	æ˜ç´°æƒ…å ±ã®ã‚­ãƒ¼
+	 * @return ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°
 	 */
 	public function get_detail_image_tag( $yyyymmdd) {
 		$obj = (object)$this->get_detail( $yyyymmdd);
 		return $obj->get_image_tag();
 	}
 	/**
-	 * ÊÔ½¸¥¢¥ó¥«¡¼ÉÕ¤­¤Î¥¤¥á¡¼¥¸¥¿¥°¤òÊÖ¤¹
-	 * @param	$refer		Á«°Ü¸µ¥Ú¡¼¥¸Ì¾
-	 * @param	$page_name	ÊÔ½¸¥Ú¡¼¥¸Ì¾
-	 * @return	ÊÔ½¸¥¢¥ó¥«¡¼ÉÕ¤­¤Î¥¤¥á¡¼¥¸¥¿¥°
+	 * ç·¨é›†ã‚¢ãƒ³ã‚«ãƒ¼ä»˜ãã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°ã‚’è¿”ã™
+	 * @param	$refer		é·ç§»å…ƒãƒšãƒ¼ã‚¸å
+	 * @param	$page_name	ç·¨é›†ãƒšãƒ¼ã‚¸å
+	 * @return	ç·¨é›†ã‚¢ãƒ³ã‚«ãƒ¼ä»˜ãã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°
 	 */
 	public function get_detail_image_tag_with_anchor( $yyyymmdd, $page) {
 		$obj = (object)$this->get_detail( $yyyymmdd);
 		return $obj->get_image_tag_with_anchor( $page, $this->page_name);
 	}
 	/**
-	 * ÌÀºÙ¾ğÊó¤Îµ¤Ê¬¤òÊÖ¤¹
-	 * @param $yyyymmdd	ÌÀºÙ¾ğÊó¤Î¥­¡¼
-	 * @return µ¤Ê¬
+	 * æ˜ç´°æƒ…å ±ã®æ°—åˆ†ã‚’è¿”ã™
+	 * @param $yyyymmdd	æ˜ç´°æƒ…å ±ã®ã‚­ãƒ¼
+	 * @return æ°—åˆ†
 	 */
 	public function get_detail_feeling( $yyyymmdd) {
 		$obj = (object)$this->get_detail( $yyyymmdd);
 		return $obj->get_feeling();
 	}
 	/**
-	 * ÌÀºÙ¾ğÊó¤Î¥³¥á¥ó¥È¤òÊÖ¤¹
-	 * @param $yyyymmdd	ÌÀºÙ¾ğÊó¤Î¥­¡¼
-	 * @return ¥³¥á¥ó¥È
+	 * æ˜ç´°æƒ…å ±ã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’è¿”ã™
+	 * @param $yyyymmdd	æ˜ç´°æƒ…å ±ã®ã‚­ãƒ¼
+	 * @return ã‚³ãƒ¡ãƒ³ãƒˆ
 	 */
 	public function get_detail_comment( $yyyymmdd) {
 		$obj = (object)$this->get_detail( $yyyymmdd);
 		return $obj->get_comment();
 	}
 	/**
-	 * ÌÀºÙ¾ğÊó¤òÀßÄê¤¹¤ë
-	 * @param $yyyymmdd	YYYYMMDD·Á¼°¤ÎÇ¯·îÆü¡Ê¥­¡¼¡Ë
-	 * @param $feeling	µ¤Ê¬
-	 * @param $comment	¥³¥á¥ó¥È¡Ê¾ÊÎ¬²Ä¡Ë
+	 * æ˜ç´°æƒ…å ±ã‚’è¨­å®šã™ã‚‹
+	 * @param $yyyymmdd	YYYYMMDDå½¢å¼ã®å¹´æœˆæ—¥ï¼ˆã‚­ãƒ¼ï¼‰
+	 * @param $feeling	æ°—åˆ†
+	 * @param $comment	ã‚³ãƒ¡ãƒ³ãƒˆï¼ˆçœç•¥å¯ï¼‰
 	 */
 	public function set_detail( $yyyymmdd, $feeling, $comment = '') {
 		if ( !checkdate( substr( $yyyymmdd, 4, 2), substr( $yyyymmdd, 6, 2), substr( $yyyymmdd, 0, 4))) {
-			throw new IllegalArgumentException('°ú¿ô $yyyymmdd ¤ÎÃÍ¤¬ÉÔÀµ¤Ç¤¹');
+			throw new IllegalArgumentException('å¼•æ•° $yyyymmdd ã®å€¤ãŒä¸æ­£ã§ã™');
 		}
 		if ( $feeling === '') {
-			throw new IllegalArgumentException('°ú¿ô $feeling ¤ÏÉ¬¿Ü¤Ç¤¹');
+			throw new IllegalArgumentException('å¼•æ•° $feeling ã¯å¿…é ˆã§ã™');
 		}
 		$this->details[ $yyyymmdd] = PluginNikocaleDetail::create( $yyyymmdd, $feeling, $comment);
 	}
 	/**
-	 * ¥Ë¥³¥«¥ì¾ğÊó¤òÀ®·Á¤·¤¿¥Æ¥­¥¹¥È¤òÊÖ¤¹
-	 * @return ¥Ë¥³¥«¥ì¾ğÊó¥Æ¥­¥¹¥È
+	 * ãƒ‹ã‚³ã‚«ãƒ¬æƒ…å ±ã‚’æˆå½¢ã—ãŸãƒ†ã‚­ã‚¹ãƒˆã‚’è¿”ã™
+	 * @return ãƒ‹ã‚³ã‚«ãƒ¬æƒ…å ±ãƒ†ã‚­ã‚¹ãƒˆ
 	 */
 	public function make_page_format() {
 		$details = array();
@@ -487,51 +487,51 @@ class PluginNikocaleContent {
 		return join( "\n", $details);
 	}
 	/**
-	 * ¥Ë¥³¥«¥ì¾ğÊó¤ò¥Ú¡¼¥¸¤Ë½ĞÎÏ¤¹¤ë
-	 * @param $page_name	ÂĞ¾İ¥Ú¡¼¥¸
+	 * ãƒ‹ã‚³ã‚«ãƒ¬æƒ…å ±ã‚’ãƒšãƒ¼ã‚¸ã«å‡ºåŠ›ã™ã‚‹
+	 * @param $page_name	å¯¾è±¡ãƒšãƒ¼ã‚¸
 	 */
 	public function write( $page_name) {
 		page_write( $page_name, $this->make_page_format(), PLUGIN_NIKOCALE_TIMESTAMP);
 	}
 }
 /**
- * ¿·µ¬¥æ¡¼¥¶¡¼ÍÑ¤ÎPluginNikocaleContent
+ * æ–°è¦ãƒ¦ãƒ¼ã‚¶ãƒ¼ç”¨ã®PluginNikocaleContent
  */
 class PluginNikocaleNewContent extends PluginNikocaleContent {
 	/**
-	 * ¥³¥ó¥¹¥È¥é¥¯¥¿
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
-	public function PluginNikocaleNewContent( $new_name) {	// overload»È¤¨¤Ê¤¤¤±¤É¥µ¥Ö¥¯¥é¥¹¤Ê¤éµ¿»÷Åª¤Ë²ÄÇ½
+	public function PluginNikocaleNewContent( $new_name) {	// overloadä½¿ãˆãªã„ã‘ã©ã‚µãƒ–ã‚¯ãƒ©ã‚¹ãªã‚‰ç–‘ä¼¼çš„ã«å¯èƒ½
 		$this->name = $new_name;
 	}
 }
 
 /**
- * ¥Ë¥³¥«¥ì¾ÜºÙ¾ğÊó¥¯¥é¥¹
+ * ãƒ‹ã‚³ã‚«ãƒ¬è©³ç´°æƒ…å ±ã‚¯ãƒ©ã‚¹
  */
 class PluginNikocaleDetail {
 	
-	/** µ¤Ê¬: happy */
+	/** æ°—åˆ†: happy */
 	const FEELING_GOOD		= '(^^)';
-	/** µ¤Ê¬: normal */
+	/** æ°—åˆ†: normal */
 	const FEELING_NORMAL	= '(--)';
-	/** µ¤Ê¬: sad.. */
+	/** æ°—åˆ†: sad.. */
 	const FEELING_BAD		= '(__)';
 	
-	/** YYYYMMDD·Á¼°¤ÎÇ¯·îÆü */
+	/** YYYYMMDDå½¢å¼ã®å¹´æœˆæ—¥ */
 	private $yyyymmdd;
-	/** µ¤Ê¬ */
+	/** æ°—åˆ† */
 	private $feeling;
-	/** ¥³¥á¥ó¥È */
+	/** ã‚³ãƒ¡ãƒ³ãƒˆ */
 	private $comment;
-	/** ²èÁü¤ÎÉ½¼¨¥µ¥¤¥º */
+	/** ç”»åƒã®è¡¨ç¤ºã‚µã‚¤ã‚º */
 	private $image_size = PLUGIN_NIKOCALE_IMAGE_SIZE;
 	
 	/**
-	 * ¥³¥ó¥¹¥È¥é¥¯¥¿¡ÊÈó¸ø³«¡Ë
-	 * @param	$yyyymmdd	YYYYMMDD·Á¼°¤ÎÇ¯·îÆü
-	 * @param	$feeling	µ¤Ê¬
-	 * @param	$comment	¥³¥á¥ó¥È
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆéå…¬é–‹ï¼‰
+	 * @param	$yyyymmdd	YYYYMMDDå½¢å¼ã®å¹´æœˆæ—¥
+	 * @param	$feeling	æ°—åˆ†
+	 * @param	$comment	ã‚³ãƒ¡ãƒ³ãƒˆ
 	 */
 	private function PluginNikocaleDetail( $yyyymmdd, $feeling, $comment) {
 	
@@ -570,15 +570,15 @@ class PluginNikocaleDetail {
 	}
 
 	/**
-	 * Null¥ª¥Ö¥¸¥§¥¯¥È¤òÊÖ¤¹
-	 * @return PluginNikocaleDetail·¿¤Î¥¤¥ó¥¹¥¿¥ó¥¹
+	 * Nullã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™
+	 * @return PluginNikocaleDetailå‹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	 */
 	public static function null_object() {
 		return PluginNikocaleNullDetail::get_instance();
 	}
 	/**
-	 * ¥Õ¥¡¥¯¥È¥ê¡¼¥á¥½¥Ã¥É
-	 * @return PluginNikocaleDetail·¿¤Î¥¤¥ó¥¹¥¿¥ó¥¹
+	 * ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰
+	 * @return PluginNikocaleDetailå‹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	 */
 	public static function create( $yyyymmdd, $feeling = '', $comment = '') {
 		if ( !checkdate( substr( $yyyymmdd, 4, 2), substr( $yyyymmdd, 6, 2), substr( $yyyymmdd, 0, 4))) {
@@ -589,11 +589,11 @@ class PluginNikocaleDetail {
 		}
 	}
 	/**
-	 * ¥¤¥á¡¼¥¸¥¿¥°¤òÊÖ¤¹
-	 * @return ¥¤¥á¡¼¥¸¥¿¥°
+	 * ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°ã‚’è¿”ã™
+	 * @return ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°
 	 */
 	public function get_image_tag() {
-		// ¤ä¤ê¤¿¤±¤ì¤Ğ¥İ¥ê¥â¡¼¥Õ¥£¥º¥à¤·¤Æ¤Í
+		// ã‚„ã‚ŠãŸã‘ã‚Œã°ãƒãƒªãƒ¢ãƒ¼ãƒ•ã‚£ã‚ºãƒ ã—ã¦ã­
 		switch ( $this->feeling) {
 			case PluginNikocaleDetail::FEELING_GOOD:
 				$src = PLUGIN_NIKOCALE_IMAGE_GOOD;
@@ -610,10 +610,10 @@ class PluginNikocaleDetail {
 			. " />";
 	}
 	/**
-	 * ÊÔ½¸¥¢¥ó¥«¡¼ÉÕ¤­¤Î¥¤¥á¡¼¥¸¥¿¥°¤òÊÖ¤¹
-	 * @param	$refer		Á«°Ü¸µ¥Ú¡¼¥¸Ì¾
-	 * @param	$page_name	ÊÔ½¸¥Ú¡¼¥¸Ì¾
-	 * @return	ÊÔ½¸¥¢¥ó¥«¡¼ÉÕ¤­¤Î¥¤¥á¡¼¥¸¥¿¥°
+	 * ç·¨é›†ã‚¢ãƒ³ã‚«ãƒ¼ä»˜ãã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°ã‚’è¿”ã™
+	 * @param	$refer		é·ç§»å…ƒãƒšãƒ¼ã‚¸å
+	 * @param	$page_name	ç·¨é›†ãƒšãƒ¼ã‚¸å
+	 * @return	ç·¨é›†ã‚¢ãƒ³ã‚«ãƒ¼ä»˜ãã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°
 	 */
 	public function get_image_tag_with_anchor( $refer, $page_name) {
 		$params = array(
@@ -627,22 +627,22 @@ class PluginNikocaleDetail {
 
 	}
 	/**
-	 * Ç¯·îÆü¤òÊÖ¤¹
-	 * @return Ç¯·îÆü(YYYYMMDD·Á¼°)
+	 * å¹´æœˆæ—¥ã‚’è¿”ã™
+	 * @return å¹´æœˆæ—¥(YYYYMMDDå½¢å¼)
 	 */
 	public function get_yyyymmdd() {
 		return $this->yyyymmdd;
 	}
 	/**
-	 * µ¤Ê¬¤òÊÖ¤¹
-	 * @return µ¤Ê¬
+	 * æ°—åˆ†ã‚’è¿”ã™
+	 * @return æ°—åˆ†
 	 */
 	public function get_feeling() {
 		return $this->feeling;
 	}
 	/**
-	 * ¥³¥á¥ó¥È¤òÊÖ¤¹
-	 * @return ¥³¥á¥ó¥È
+	 * ã‚³ãƒ¡ãƒ³ãƒˆã‚’è¿”ã™
+	 * @return ã‚³ãƒ¡ãƒ³ãƒˆ
 	 */
 	public function get_comment() {
 		return $this->comment;
@@ -651,13 +651,13 @@ class PluginNikocaleDetail {
 
 class PluginNikocaleNullDetail extends PluginNikocaleDetail {
 	/**
-	 * ¥³¥ó¥¹¥È¥é¥¯¥¿¡ÊÈó¸ø³«¡Ë
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆéå…¬é–‹ï¼‰
 	 */
 	private function PluginNikocaleNullDetail() {
 	}
 	/**
-	 * ¼«¿È¤ÎÍ£°ì¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÊÖ¤¹
-	 * @return ¥¤¥ó¥¹¥¿¥ó¥¹
+	 * è‡ªèº«ã®å”¯ä¸€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™
+	 * @return ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	 */
 	protected static function get_instance() {
 		static $NULL_FEELING;
@@ -667,17 +667,17 @@ class PluginNikocaleNullDetail extends PluginNikocaleDetail {
 		return $NULL_FEELING;
 	}
 	/**
-	 * ¥¤¥á¡¼¥¸¥¿¥°¤òÊÖ¤¹
-	 ¡ö@return ¥¤¥á¡¼¥¸¥¿¥°
+	 * ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°ã‚’è¿”ã™
+	 ï¼Š@return ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°
 	 */
 	function get_image_tag() {
 		return "&nbsp;";
 	}
 	/**
-	 * ÊÔ½¸¥¢¥ó¥«¡¼ÉÕ¤­¤Î¥¤¥á¡¼¥¸¥¿¥°¤òÊÖ¤¹
-	 * @param	$refer		Á«°Ü¸µ¥Ú¡¼¥¸Ì¾
-	 * @param	$page_name	ÊÔ½¸¥Ú¡¼¥¸Ì¾
-	 * @return	ÊÔ½¸¥¢¥ó¥«¡¼ÉÕ¤­¤Î¥¤¥á¡¼¥¸¥¿¥°
+	 * ç·¨é›†ã‚¢ãƒ³ã‚«ãƒ¼ä»˜ãã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°ã‚’è¿”ã™
+	 * @param	$refer		é·ç§»å…ƒãƒšãƒ¼ã‚¸å
+	 * @param	$page_name	ç·¨é›†ãƒšãƒ¼ã‚¸å
+	 * @return	ç·¨é›†ã‚¢ãƒ³ã‚«ãƒ¼ä»˜ãã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚°
 	 */
 	public function get_image_tag_with_anchor( $page, $name) {
 		return "&nbsp;";
